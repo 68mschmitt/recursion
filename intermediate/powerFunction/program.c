@@ -11,11 +11,25 @@ int power(int a, int b) {
     return a * power(a, b - 1);
 }
 
+int switch_power(int a, int b) {
+    switch (b) {
+        case 0:
+            return 1;
+            break;
+        case 1:
+            return a;
+            break;
+        default:
+            return a * power(a, b - 1);
+            break;
+    }
+}
+
 void run_power() {
     int a, b;
     a = 2;
     b = 20;
-    int result = power(a, b);
+    int result = switch_power(a, b);
     printf("%d^%d = %d\n", a, b, result);
 }
 
