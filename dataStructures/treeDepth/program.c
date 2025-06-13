@@ -5,68 +5,51 @@
 #include <stdlib.h>
 
 struct TreeNode {
+    int value;
     struct TreeNode* left;
     struct TreeNode* right;
 };
 
-struct Node {
-    struct TreeNode* treeNode;
-    struct Node* next;
+struct QueueNode {
+    struct TreeNode* value;
+    struct QueueNode* next;
 };
 
-int tree_depth(struct TreeNode* root);
-struct TreeNode* create_node();
-void add_leaf(struct Node* stack, struct TreeNode* newNode);
-void print_nodes(struct TreeNode* head);
-
-struct TreeNode* create_tree_node() {
-    struct TreeNode* newNode = malloc(sizeof(struct TreeNode));
-    return newNode;
+void enqueue(struct QueueNode* head, struct TreeNode* value) {
+    struct QueueNode* newItem = malloc(sizeof(struct QueueNode));
+    newItem->value = value;
+    struct QueueNode* focusItem = head;
+    while (focusItem->next) focusItem = focusItem->next;
+    focusItem->next = newItem;
 }
 
-struct Node* push_to_stack(struct Node* head, struct TreeNode* treeNode) {
-    struct Node* newNode = malloc(sizeof(struct Node));
-    newNode->treeNode = treeNode;
-    newNode->next = head;
-    return newNode;
-}
-
-struct Node pop_from_stack(struct Node* head) {
-    if (!head->next) return *head;
-    struct Node tmpNode = *head;
-    free(head);
-    head = head->next;
-    return tmpNode;
-}
-
-// I think I can do it with a pointer to a stack that exists outside of the add_leaf function
-void slot_leaf(struct TreeNode* head, struct TreeNode* newNode) {
-    struct Node* stack = malloc(sizeof(struct Node));
-    stack->treeNode = head;
-    add_leaf(stack, newNode);
-}
-
-void add_leaf(struct Node* stack, struct TreeNode* newNode) {
-    struct Node head = pop_from_stack(stack);
-    if (!head.treeNode) return;
-    if (!head.treeNode->left) head.treeNode->left = newNode;
-    else if (!head.treeNode->right) head.treeNode->right = newNode;
-    else {
-        push_to_stack(stack, head.treeNode->left);
-        push_to_stack(stack, head.treeNode->right);
-        add_leaf(stack, newNode);
+struct TreeNode* build_tree() {
+    struct QueueNode* queue = malloc(sizeof(struct QueueNode));
+    struct TreeNode* head = malloc(sizeof(struct TreeNode));
+    enqueue(head, queue);
+    unsigned i;
+    unsigned count = 20;
+    for (i = 0; i < 20; i++) {
+        // Fill in the left
+        // Add the left to the stack
+        // Fill in the right
+        // Add the right to the stack
+        // Dequeue the next node
     }
 }
+
+int tree_depth(struct TreeNode* root);
 
 int tree_depth(struct TreeNode* root) {
     return 1;
 }
 
+void run_tree_depth() {
+    struct TreeNode* head;
+    tree_depth(head);
+}
+
 int main() {
-    struct TreeNode* treeHead = malloc(sizeof(struct TreeNode));
-    int i;
-    for (i = 0; i < 100; i++) {
-        slot_leaf(treeHead, malloc(sizeof(struct TreeNode)));
-    }
+    run_tree_depth();
     return 1;
 }
