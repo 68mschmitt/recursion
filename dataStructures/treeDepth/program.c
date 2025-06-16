@@ -30,12 +30,14 @@ void print_tree(TreeNode* root) {
 }
 
 int tree_depth(TreeNode* root) {
-    return 0;
+    if (root == NULL) return 0;
+    int leftDepth = tree_depth(root->left);
+    int rightDepth = tree_depth(root->right);
+    return 1 + (leftDepth > rightDepth ? leftDepth : rightDepth);
 }
 
 void run_tree_depth() {
     TreeNode* root;
-    tree_depth(root);
     // The tree depth should be 3
     int treeData[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
@@ -63,7 +65,7 @@ void run_tree_depth() {
     nodeEight->left = nodeNine;
 
     print_tree(nodeFive);
-    int depth = tree_depth(nodeFive) - 1;
+    int depth = tree_depth(nodeFive);
     printf("The depth of the tree is %d\n", depth);
 }
 
