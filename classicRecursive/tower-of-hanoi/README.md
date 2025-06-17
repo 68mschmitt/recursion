@@ -1,0 +1,3 @@
+- Tower of Hanoi
+ - Print the moves required to solve Tower of Hanoi for n disks.
+  - Prototype: void hanoi(int n, char from, char to, char aux);
