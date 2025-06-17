@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+
 typedef struct TreeNode {
     int data;
     struct TreeNode* left;
@@ -31,9 +33,7 @@ void print_tree(TreeNode* root) {
 
 int tree_depth(TreeNode* root) {
     if (root == NULL) return 0;
-    int leftDepth = tree_depth(root->left);
-    int rightDepth = tree_depth(root->right);
-    return 1 + (leftDepth > rightDepth ? leftDepth : rightDepth);
+    return 1 + MAX(tree_depth(root->left), tree_depth(root->right));
 }
 
 void run_tree_depth() {
