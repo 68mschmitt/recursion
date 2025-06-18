@@ -53,5 +53,5 @@ int main() {
     struct Node* head = generate_linked_list(20);
     int result = list_length(head);
     printf("Length of linked list: %d\n", result);
-    return 1;
+    return 0;
 }

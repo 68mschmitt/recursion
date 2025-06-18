@@ -24,5 +24,5 @@ int main() {
     char str[] = "ABC";
     permutations(str, 0, 3);
     printf("\n");
-    return 1;
+    return 0;
 }

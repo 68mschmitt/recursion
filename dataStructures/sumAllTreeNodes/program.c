@@ -55,5 +55,5 @@ void runSumCode() {
 
 int main() {
     runSumCode();
-    return 1;
+    return 0;
 }

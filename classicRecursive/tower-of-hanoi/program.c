@@ -9,5 +9,5 @@ void hanoi(int n, char from, char to, char aux) {
 
 int main() {
     hanoi(4, 'a', 'c', 'b');
-    return 1;
+    return 0;
 }

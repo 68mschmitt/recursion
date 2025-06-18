@@ -14,5 +14,5 @@ int binary_search(int* arr, int left, int right, int target) {
 
 int main() {
     run_tests();
-    return 1;
+    return 0;
 }

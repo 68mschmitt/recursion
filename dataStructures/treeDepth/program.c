@@ -71,5 +71,5 @@ void run_tree_depth() {
 
 int main() {
     run_tree_depth();
-    return 1;
+    return 0;
 }

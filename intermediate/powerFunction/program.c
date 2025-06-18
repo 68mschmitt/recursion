@@ -35,5 +35,5 @@ void run_power() {
 
 int main() {
     run_power();
-    return 1;
+    return 0;
 }
